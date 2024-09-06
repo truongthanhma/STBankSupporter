@@ -5,8 +5,7 @@ import hashlib
 
 
 USERNAME = "trang"
-# PASSWORD = "khongco"
-PASSWORD_HASH = "f847e2277fa9a8e89868f340dd3c1f8e34539b4dc1d7d865f8d2be7c4846ae91"
+PASSWORD_HASH = "46db32ea0fc4ced928035124401df8625512638e9ba4f6fc4bc946bf6d3b764b"
 
 # Hàm để mã hóa mật khẩu nhập vào
 def hash_password(password):
