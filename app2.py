@@ -132,7 +132,6 @@ else:
             st.write(f"Giá trị '{result['value']}': {src_info}, {target_info}")
             
         #csv = target_df.to_csv(index=False)
-        csvtarget_df.to_excel(index=False)
         # Lưu file đích sau khi cập nhật
         # Chuyển DataFrame thành file Excel
         excel_data = to_excel(csvtarget_df)
@@ -154,7 +153,7 @@ else:
             st.download_button(
                     label="Download data as Excel",
                     data=excel_data,
-                    file_name='data.xlsx',
+                    file_name='newsdata.xlsx',
                     mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
             )
             st.write(f"File đã được lưu với tên: {output_file}")
