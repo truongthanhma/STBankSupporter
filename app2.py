@@ -1,10 +1,17 @@
 import streamlit as st
 import pandas as pd
 from io import BytesIO
+import hashlib
+
 
 USERNAME = "trang"
-PASSWORD = "khongco"
+# PASSWORD = "khongco"
+PASSWORD_HASH = "f847e2277fa9a8e89868f340dd3c1f8e34539b4dc1d7d865f8d2be7c4846ae91"
 
+# Hàm để mã hóa mật khẩu nhập vào
+def hash_password(password):
+    return hashlib.sha256(password.encode()).hexdigest()
+    
 def extract_numbers(s):
     return ''.join(char for char in s if char.isdigit())
 
@@ -15,7 +22,9 @@ def login():
     password = st.sidebar.text_input("Mật khẩu", type="password")
     
     if st.sidebar.button("Đăng nhập"):
-        if username == USERNAME and password == PASSWORD:
+        password_hash = hash_password(password)
+
+        if username == USERNAME and password_hash == PASSWORD_HASH:
             st.session_state.logged_in = True
             st.sidebar.success("Đăng nhập thành công!")
         else:
