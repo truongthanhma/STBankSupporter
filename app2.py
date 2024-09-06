@@ -3,15 +3,28 @@ import pandas as pd
 from io import BytesIO
 import hashlib
 
+# st.markdown(
+#     r"""
+#     <style>
+#     .stDeployButton {
+#             visibility: hidden;
+#         }
+#     </style>
+#     """, unsafe_allow_html=True
+# )
 st.markdown(
-    r"""
+    """
     <style>
-    .stDeployButton {
-            visibility: hidden;
-        }
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+    .viewerBadge_text__1JaDK {
+        display: none;
+    }
     </style>
-    """, unsafe_allow_html=True
+    """,
+    unsafe_allow_html=True
 )
+
 
 USERNAME = "trang"
 PASSWORD_HASH = "46db32ea0fc4ced928035124401df8625512638e9ba4f6fc4bc946bf6d3b764b"
