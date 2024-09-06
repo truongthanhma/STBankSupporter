@@ -3,12 +3,15 @@ import pandas as pd
 from io import BytesIO
 import hashlib
 
-hide_github_icon = """
-#GithubIcon {
-  visibility: hidden;
-}
-"""
-st.markdown(hide_github_icon, unsafe_allow_html=True)
+st.markdown(
+    r"""
+    <style>
+    .stDeployButton {
+            visibility: hidden;
+        }
+    </style>
+    """, unsafe_allow_html=True
+)
 
 USERNAME = "trang"
 PASSWORD_HASH = "46db32ea0fc4ced928035124401df8625512638e9ba4f6fc4bc946bf6d3b764b"
