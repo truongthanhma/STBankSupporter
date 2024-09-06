@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-
+from io import BytesIO
 
 USERNAME = "trang"
 PASSWORD = "khongco"
@@ -20,6 +20,15 @@ def login():
             st.sidebar.success("Đăng nhập thành công!")
         else:
             st.sidebar.error("Tên đăng nhập hoặc mật khẩu không chính xác!")
+# Hàm để chuyển DataFrame thành file Excel
+def to_excel(df):
+    output = BytesIO()
+    # Tạo file Excel với pandas
+    writer = pd.ExcelWriter(output, engine='xlsxwriter')
+    df.to_excel(writer, index=False, sheet_name='Sheet1')
+    writer.save()
+    processed_data = output.getvalue()
+    return processed_data
 
 # Kiểm tra nếu người dùng đã đăng nhập
 if 'logged_in' not in st.session_state or not st.session_state.logged_in:
@@ -122,16 +131,30 @@ else:
             target_info = f"Đích (hàng {result['target_position']})" if result['target_position'] else "Đích (không tìm thấy)"
             st.write(f"Giá trị '{result['value']}': {src_info}, {target_info}")
             
-        csv = target_df.to_csv(index=False)
+        #csv = target_df.to_csv(index=False)
+        csvtarget_df.to_excel(index=False)
         # Lưu file đích sau khi cập nhật
+        # Chuyển DataFrame thành file Excel
+        excel_data = to_excel(csvtarget_df)
+
+
+
         output_file = st.text_input("Nhập tên file để lưu kết quả", value="output.xlsx")
         if st.button("Lưu file"):
             #             target_df.to_excel(output_file, index=False)
-            st.download_button(
-                    label="Download data as CSV",
-                    data=csv,
-                    file_name='data.csv',
-                    mime='text/csv',
-            )
+            
+            #st.download_button(
+            #        label="Download data as CSV",
+            #        data=csv,
+            #        file_name='data.csv',
+            #        mime='text/csv',
+            #)
 
+            # Tạo nút download cho file Excel
+            st.download_button(
+                    label="Download data as Excel",
+                    data=excel_data,
+                    file_name='data.xlsx',
+                    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
             st.write(f"File đã được lưu với tên: {output_file}")
