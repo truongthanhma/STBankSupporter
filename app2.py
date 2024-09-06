@@ -15,7 +15,7 @@ import hashlib
 st.markdown(
     """
     <style>
-    .st-emotion-cache-1huvf7z ef3psqc6{
+    .ef3psqc6{
         display: none;
     }
     </style>
