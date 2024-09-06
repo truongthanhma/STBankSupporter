@@ -114,16 +114,24 @@ else:
                 'value_in_col_j': values_in_col_j[i]
             }
             results.append(result)
-
+        
         # Hiển thị kết quả
         st.write("Kết quả tìm kiếm:")
         for result in results:
             src_info = f"Nguồn (hàng {result['src_position']}, giá trị cột J: {result['value_in_col_j']} )" if result['src_position'] else "Nguồn (không tìm thấy)"
             target_info = f"Đích (hàng {result['target_position']})" if result['target_position'] else "Đích (không tìm thấy)"
             st.write(f"Giá trị '{result['value']}': {src_info}, {target_info}")
-
+            
+        csv = target_df.to_csv(index=False)
         # Lưu file đích sau khi cập nhật
         output_file = st.text_input("Nhập tên file để lưu kết quả", value="output.xlsx")
         if st.button("Lưu file"):
-            target_df.to_excel(output_file, index=False)
+            #             target_df.to_excel(output_file, index=False)
+            st.download_button(
+                    label="Download data as CSV",
+                    data=csv,
+                    file_name='data.csv',
+                    mime='text/csv',
+            )
+
             st.write(f"File đã được lưu với tên: {output_file}")
