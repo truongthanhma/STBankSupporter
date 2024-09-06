@@ -23,7 +23,9 @@ def login():
     
     if st.sidebar.button("Đăng nhập"):
         password_hash = hash_password(password)
-
+        # Kiểm tra mật khẩu đã nhập và hash của nó
+        st.write(f"Password entered (hash): {password_hash}")
+        st.write(f"Expected hash: {PASSWORD_HASH}")
         if username == USERNAME and password_hash == PASSWORD_HASH:
             st.session_state.logged_in = True
             st.sidebar.success("Đăng nhập thành công!")
