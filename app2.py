@@ -12,16 +12,16 @@ import hashlib
 #     </style>
 #     """, unsafe_allow_html=True
 # )
-st.markdown(
-    """
-    <style>
-    .ef3psqc6{
-        display: none;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+# st.markdown(
+#     """
+#     <style>
+#     .ef3psqc6{
+#         display: none;
+#     }
+#     </style>
+#     """,
+#     unsafe_allow_html=True
+# )
 
 
 USERNAME = "trang"
