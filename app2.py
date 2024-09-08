@@ -60,7 +60,7 @@ def to_excel(df):
     processed_data = output.getvalue()
     return processed_data
 
- login()
+login()
 # Kiểm tra nếu người dùng đã đăng nhập
 if 'logged_in' not in st.session_state or not st.session_state.logged_in:
     login()
